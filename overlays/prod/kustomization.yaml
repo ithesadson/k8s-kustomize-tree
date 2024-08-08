@@ -1,0 +1,19 @@
+namePrefix: prod-
+bases:
+  - ../base
+patchesStrategicMerge:
+  - deployment-patch.yaml
+images:
+  - name: nginx
+    newTag: 1.23-alpine
+replicaCount:
+  - name: nginx-deployment
+    count: 5
+resources:
+  - name: nginx
+    limits:
+      cpu: "800m"
+      memory: "1Gi"
+    requests:
+      cpu: "400m"
+      memory: "512Mi"
