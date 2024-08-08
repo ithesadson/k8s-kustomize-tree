@@ -1,19 +1,24 @@
-namePrefix: test-
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
 bases:
-  - ../base
+- ../../base
+
+namespace: my-app-test
+
+nameSuffix: -test
+
 patchesStrategicMerge:
-  - deployment-patch.yaml
-images:
-  - name: nginx
-    newTag: "1.27.0"
-replicaCount:
-  - name: nginx-deployment
-    count: 3
-resources:
-  - name: nginx
-    limits:
-      cpu: 400m
-      memory: 384Mi 
-    requests:
-      cpu: 150m
-      memory: 192Mi
+- deployment_env.yaml
+
+
+configMapGenerator:
+  - name: app-config
+    literals:
+      - username=tree-user
+
+secretGenerator:
+  - name: credentials
+    type: Opaque
+    literals:
+      - password=tree-password

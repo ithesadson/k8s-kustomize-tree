@@ -9,7 +9,7 @@ spec:
       - name: my-app
         env:
           - name: foo
-            value: we-are-in-prod
+            value: we-are-in-test
         envFrom:
           - configMapRef:
               name: app-config
