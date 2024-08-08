@@ -10,15 +10,15 @@ nameSuffix: -test
 
 patchesStrategicMerge:
 - deployment_env.yaml
-
+- deployment_replicas.yaml
 
 configMapGenerator:
   - name: app-config
     literals:
-      - username=tree-user
+      - username=admin
 
 secretGenerator:
   - name: credentials
     type: Opaque
     literals:
-      - password=tree-password
+      - password=test-password

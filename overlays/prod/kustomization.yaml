@@ -15,17 +15,16 @@ patchesStrategicMerge:
 - deployment_env.yaml
 - deployment_volume.yaml
 
-
 configMapGenerator:
   - name: app-config
     literals:
-      - username=prod-user
+      - username=admin
 
 secretGenerator:
   - name: credentials
     type: Opaque
     literals:
-      - password=foo
+      - password=prod-password
   - name: certs
     files:
       - assets/ca.pem
